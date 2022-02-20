@@ -49,6 +49,7 @@ if __name__ == "__main__":
             print("\033[3;35mActivity Name? >>\033[0;35m", end=' ')
             name = input()
             
+            
             print("\033[3;35mStart Time? (YEAR-MONTH-DAY-HOUR-MINUTE) >>\033[0;35m", end=' ')
             start = datetime(*list(map(int,input().split('-'))))
             start = start.replace(tzinfo=timezone("UTC"))
@@ -72,10 +73,15 @@ if __name__ == "__main__":
             print("\033[3;35mAssignment Name? >>\033[0;35m", end=' ')
             name = input()
             
+            '''
             print("\033[3;35mStart Time? (YEAR-MONTH-DAY-HOUR-MINUTE) >>\033[0;35m", end=' ')
             start = datetime(*list(map(int,input().split('-'))))
             start = start.replace(tzinfo=timezone("UTC"))
             
+            '''
+
+            start = datetime.now(timezone('UTC')) - timedelta(hours=5)
+
             print("\033[3;35mLength (DAYS-HOURS-MINUTES) >>\033[0;35m", end=' ')
             times = list(map(int,input().split('-')))
             length = timedelta(

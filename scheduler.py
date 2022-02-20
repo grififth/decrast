@@ -19,12 +19,12 @@ class Scheduler:
 
         #Get the current Time
         timeNow = datetime.now(timezone('UTC'))
-
+        timeNow -= timedelta(hours=5)
         #print("Time Now:")
         #print(datetime.now())
 
         #Remove all activities that are before the current time
-        
+        '''
         toRemove = []
 
         for actInd in range(len(self.activities)):
@@ -50,6 +50,8 @@ class Scheduler:
 
         #print(self.assignments)
 
+        '''
+
         #Get all the time intervals 
         timeIntervals = []
 
@@ -68,6 +70,7 @@ class Scheduler:
         for assign in self.assignments:
             #print(assign)
             #First check if the very first position works
+            print(timeNow)
             if assign.start + assign.length + BREAK_TIME <= timeIntervals[0][0]:
                 assignmentTimes.append([assign, assign.start])
                 timeIntervals.insert(0, [assign.start, assign.start + assign.length])
@@ -89,9 +92,11 @@ class Scheduler:
 
             for timeInt in timeIntervals:
                 counter += 1
+
                 if firstIter:
                     firstIter = False
                     continue
+
 
                 if lastTime + BREAK_TIME + assign.length > assign.due:
                     return f'Error,{assign.name}'

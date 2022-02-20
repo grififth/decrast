@@ -47,6 +47,9 @@ def unparse(path, schedule, filename, breaktime):
     
     #add activities to calender object
     for activity, start in lst:
+
+        if isinstance(activity, Activity):
+            continue
     
         event = Event()
         event.add('summary', activity.name)
