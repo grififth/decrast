@@ -9,6 +9,20 @@ class Scheduler:
         self.activities = activities
         self.assignments = assignments
         
+    def createAssignment(self, newAssignment):
+        self.assignments.append(newAssignment)
+    
+    def createActivity(self, newActivity):
+        self.activities.append(newActivity)
+        
+    def newActivity(self, name, start, length, description):        
+        activity = Activity(name, start, length, description)
+        self.createActivity(activity)
+        
+    def newAssignment(self, name, start, length, due, description, links):
+        assignment = Assignment(name, start, length, due, description, links)
+        self.createAssignment(assignment)
+
     def compileSchedule(self, BREAK_TIME):
 
         #print("Test Compile")
@@ -148,20 +162,6 @@ class Scheduler:
 
         return allTimes
 
-
-    def createAssignment(self, newAssignment):
-        self.assignments.append(newAssignment)
-    
-    def createActivity(self, newActivity):
-        self.activities.append(newActivity)
-        
-    def newActivity(self, name, start, length, description):        
-        activity = Activity(name, start, length, description)
-        self.createActivity(activity)
-        
-    def newAssignment(self, name, start, length, due, description, links):
-        assignment = Assignment(name, start, length, due, description, links)
-        self.createAssignment(assignment)
     
 """
         testScheduler = Scheduler()
