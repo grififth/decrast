@@ -70,7 +70,6 @@ class Scheduler:
         for assign in self.assignments:
             #print(assign)
             #First check if the very first position works
-            print(timeNow)
             if assign.start + assign.length + BREAK_TIME <= timeIntervals[0][0]:
                 assignmentTimes.append([assign, assign.start])
                 timeIntervals.insert(0, [assign.start, assign.start + assign.length])
